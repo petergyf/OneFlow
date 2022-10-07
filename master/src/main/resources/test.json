@@ -1,0 +1,73 @@
+{
+  "projectId": 1,
+  "projectName": "projectA",
+  "dataSources": [
+    {
+      "name": "hive"
+    },
+    {
+      "url": "jdbc:mysql://localhost:3306/test",
+      "userName": "root",
+      "password": "sasa",
+      "driver": "com.mysql.jdbc.Driver",
+      "name": "mysql1"
+    }
+  ],
+  "tasks": [
+    {
+      "taskId": 1,
+      "taskName": "task1",
+      "cron": "0 * * * * ?",
+      "steps": [
+        {
+          "order": 1,
+          "stepName": "step1",
+          "type": "function",
+          "path": "/Users/shizhema/IdeaProjects/functions/target/functions-1.0-SNAPSHOT.jar",
+          "className": "com.oc.oneflow.functions.CustomFunc",
+          "methodName": "add",
+          "funcParamList": [
+            "a=1",
+            "b=2"
+          ]
+        },
+        {
+          "order": 1,
+          "stepName": "step2",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2012"
+          },
+          "path": "/dev/shm/test3.hql"
+        },
+        {
+          "order": 2,
+          "stepName": "step3",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2012"
+          },
+          "path": "/dev/shm/test3.hql"
+        },
+        {
+          "order": 3,
+          "stepName": "step4",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2012"
+          },
+          "path": "/dev/shm/test3.hql"
+        },
+        {
+          "order": 3,
+          "stepName": "step5",
+          "type": "hive",
+          "hiveParam": {
+            "var1": "2012"
+          },
+          "path": "/dev/shm/test3.hql"
+        }
+      ]
+    }
+  ]
+}
